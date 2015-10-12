@@ -10,7 +10,6 @@ var Lodash = require('lodash');
 var HapiMongooseRequest = require('hapi-mongoose-request');
 
 
-
 // Tests
 
 var lab = exports.lab = Lab.script();
@@ -20,7 +19,7 @@ var ModelWithUnique;
 
 lab.before(function (done) {
 
-	var uri = 'mongodb://localhost/0';
+	var uri = 'mongodb://localhost/test-hapi-mongoose-request';
 
 	Mongoose.connect(uri, function (err) {
 
