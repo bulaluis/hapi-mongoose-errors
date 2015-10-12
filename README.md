@@ -82,13 +82,15 @@ For now only support [**jsonapi**](http://jsonapi.org). You can implement a cust
 
             var error = {};
             Lodash.each(err.errors, function (validatorError) {
+
+                // validationError is a Mongoose.Error.ValidatorError instance
+
                 error[validatorError.path] = {
                     desc: validatorError.toString(),
                     httpStatus: http
                 };
             });
 
-            error.identifier = specificationIdentifier;
             return error;       // New object to send to client
         }
     };
