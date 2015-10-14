@@ -1,6 +1,6 @@
 {
   "name": "hapi-mongoose-errors",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Support for transform mongoose errors to different specifications on Hapi.js",
   "main": "lib/index.js",
   "scripts": {
