@@ -16,7 +16,6 @@ var lab = exports.lab = Lab.script();
 var Model;
 var ModelWithUnique;
 
-
 lab.before(function (done) {
 
     var uri = 'mongodb://localhost/test-hapi-mongoose-request';
@@ -27,7 +26,6 @@ lab.before(function (done) {
         return done();
     });
 });
-
 
 // Create a model for test.
 
@@ -54,14 +52,13 @@ lab.before(function (done) {
         }
     }));
 
+    // Model without indexes
     Mongoose.model('Test3', new Mongoose.Schema({
         _id: Boolean
     }));
 
     // Create a initial doc to handle mongodb native error
-
     return ModelWithUnique.remove({}, function () {
-
 
         ModelWithUnique.create({ name: 'uniqueName', age: 18 }, function (err) {
 
@@ -69,8 +66,6 @@ lab.before(function (done) {
         })
     });
 });
-
-
 
 lab.experiment('Hapi-mongoose-errors with function specification', function () {
 
@@ -188,7 +183,6 @@ lab.experiment('Hapi-mongoose-errors with function specification', function () {
     });
 });
 
-
 lab.experiment('Hapi-mongoose-errors with supported specification', function () {
 
     var server;
@@ -223,12 +217,10 @@ lab.experiment('Hapi-mongoose-errors with supported specification', function () 
     });
 });
 
-
 lab.after(function (done) {
 
     Mongoose.disconnect(done);
 });
-
 
 lab.experiment('Hapi-mongoose-errors with unsupported specification', function () {
 
@@ -264,7 +256,6 @@ lab.experiment('Hapi-mongoose-errors with unsupported specification', function (
     });
 });
 
-
 lab.experiment('Hapi-mongoose-errors with `hapi-mongoose-request` support', function () {
 
     var server;
@@ -289,7 +280,7 @@ lab.experiment('Hapi-mongoose-errors with `hapi-mongoose-request` support', func
                 }
 
                 ModelWithUnique.create(request.payload, function (err, doc) {
-                    
+
                     return reply(err, doc);
                 });
             }
@@ -312,7 +303,7 @@ lab.experiment('Hapi-mongoose-errors with `hapi-mongoose-request` support', func
                 error.name = 'MongoError';
                 error.code = 11000;                 // Unique index
                 error.message = 'unknown error';
-                
+
                 return reply(error);
             }
         }, {
@@ -326,7 +317,7 @@ lab.experiment('Hapi-mongoose-errors with `hapi-mongoose-request` support', func
 
                 // Unknown path
                 error.message = 'E11000 duplicate key error index: test-hapi-mongoose-errors.test2.$unknown_1 dup key: { : "uniqueName" }'
-                
+
                 return reply(error);
             }
         }]);
@@ -459,7 +450,6 @@ lab.experiment('Hapi-mongoose-errors with `hapi-mongoose-request` support', func
         server.stop(done);
     });
 });
-
 
 lab.after(function (done) {
 

@@ -38,20 +38,20 @@ server.register([{
     }, {
         register: require('hapi-mongoose-errors'),
         options: {
-            specification: 'jsonapi',   // Or custom function (err, http)
-            http: 422                   // Http code to respond
+            specification: 'jsonapi',   // Or custom function (err, http) (REQUIRED)
+            http: 422                   // Http code to respond (REQUIRED)
         }   
     }], function (err) {
 
         if (err) {
             throw err;
         }
-        
+
         server.route({
             method: 'POST',
-            path: '/api/v1/{model}',     // The same is declared in the options
+            path: '/api/v1/{model}',     // The same is declared in the `hapi-mongoose-request` options
             method: function (request, reply) {
-                
+
                 request.Model.create(request.payload, function (err, doc) {
 
                     // If you send a Error object, the plugin will check if can convert to declare specification
