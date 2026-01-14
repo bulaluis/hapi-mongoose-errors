@@ -25,7 +25,7 @@
   "devDependencies": {
     "@hapi/code": "^8.0.2",
     "@hapi/hapi": "^20.0.3",
-    "@hapi/lab": "^24.1.0",
+    "@hapi/lab": "^26.0.0",
     "joi": "^17.3.0",
     "lodash": "^4.17.20",
     "hapi-mongoose-request": "^2.0.0",
