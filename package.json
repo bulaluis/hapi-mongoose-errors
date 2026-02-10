@@ -29,7 +29,7 @@
     "joi": "^17.3.0",
     "lodash": "^4.17.20",
     "hapi-mongoose-request": "^2.0.0",
-    "mongoose": "^5.11.12"
+    "mongoose": "^6.13.6"
   },
   "directories": {
     "test": "test"
